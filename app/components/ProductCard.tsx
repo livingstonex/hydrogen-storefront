@@ -1,22 +1,8 @@
-import React, { useState } from "react";
-
-type VariantSwatch = {
-    id: number;
-    color: string;
-    current?: boolean;
-    swatchImage: string;
-    secondaryImage: string;
-  };
-  
-type ProductData = {
-    onSale: boolean;
-    productImage: string;
-    productTitle: string;
-    companyName: string;
-    originalPrice: string;
-    discountedPrice: string;
-    variantSwatches: VariantSwatch[];
-  };
+import { useState } from "react";
+import { VariantSwatch, ProductData } from "custom";
+import ProductSwatchVariant from "./ProductSwatchVariant";
+import ProductInfo from "./ProductInfo";
+import ProductHeader from "./ProductHeader";
 
 
 export function ProductCard({ data }: { data: ProductData }) {
@@ -31,42 +17,15 @@ export function ProductCard({ data }: { data: ProductData }) {
     return (
         <div className='flex justify-center'>
             <div className='flex-col px-8'>
-            <h1 className='justify-start'>Product Card</h1>
-
-            <div className='flex relative group justify-center bg-[#FFFFF] p-5 border border-gray-300 rounded-xl'>
-                {
-                    data.onSale ? <span className='z-30 left-5 top-5 absolute text-red-500 border-2 border-red-500 rounded-full h-10 pt-1.5 px-8'>On Sale!</span> : null
-                }
-                
-                <img src={productImage}  width='350px' alt='Green shirt' className='mt-4' />
-
-                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 ml-4 hidden group-hover:block py-4 shadow-lg rounded-lg">
-                    <img src={currentSwatch?.secondaryImage} alt="Tooltip Image" className="w-48 h-48 object-contain" />
-                </div>
-            </div>
-
-            <div className='flex gap-2'> 
-                {
-                    data.variantSwatches.map((swatch, index) => (
-                        <div 
-                            key={swatch.color} 
-                            onClick={() => handleClick(swatch)}
-                            className={`flex justify-center items-center w-10 h-10 rounded-full ${(swatch.id === currentSwatch?.id) && 'border-2 border-[#0A4874]' } mt-4`}>
-                            <div className={`w-8 h-8 ${swatch.color} rounded-full`}></div>
-                        </div>
-                    ))
-                }
-            </div>
-                
-
-            <div className='flex flex-col gap-2 mt-5'>
-                <div className='text-[#111111] font-normal text-sm'>{data.companyName}</div>
-                <div className='text-[#0A4874] text-base font-medium'>{data.productTitle}</div>
-                <div className='flex justify-start gap-2'>
-                <p className={`text-black-400 ${data.discountedPrice && 'line-through'}`}>{data.originalPrice}</p>
-                <p className='text-red-400'>{data.discountedPrice ?? null}</p>
-                </div>
-            </div>
+                <h1 className='justify-start'>Product Card</h1>
+                <ProductHeader onSale={data.onSale} productImage={productImage} currentSwatch={currentSwatch}/>
+                <ProductSwatchVariant variantSwatches={data.variantSwatches} currentSwatch={currentSwatch} handleClick={handleClick}/>
+                <ProductInfo
+                    companyName={data.companyName}
+                    productTitle={data.productTitle} 
+                    originalPrice={data.originalPrice}
+                    discountedPrice={data.discountedPrice}
+                />
             </div>
         </div>
     )
