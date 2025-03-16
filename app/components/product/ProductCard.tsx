@@ -5,7 +5,7 @@ import ProductInfo from "./ProductInfo";
 import ProductHeader from "./ProductHeader";
 
 
-export function ProductCard({ data }: { data: ProductData }) {
+export default function ProductCard({ data }: { data: ProductData }) {
     const [productImage, setProductImage] = useState<string | undefined>(data.variantSwatches[0]?.swatchImage);
     const [currentSwatch, setCurrentSwatch] = useState<VariantSwatch | undefined>(data.variantSwatches[0]);
 

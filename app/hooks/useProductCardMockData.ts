@@ -11,8 +11,7 @@ import PinkSecondary from '../assets/pink-secondary.png';
 import OrangeSecondary from '../assets/orange-secondary.png';
 import YellowSecondary from '../assets/yellow-secondary.png';
 
-
-export const cardData = () => {
+const cardMockData = () => {
     return {
       onSale: true,
       productImage: Green,
@@ -65,4 +64,9 @@ export const cardData = () => {
         },
       ]
     }
+  };
+
+  export function useProductCardMockData() {
+    return cardMockData();
   }
+
