@@ -6,6 +6,9 @@ import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
+import Green from '../assets/green.png';
+import { cardData } from '~/utils/data';
+import { ProductCard } from '~/components/ProductCard';
 
 export const meta: MetaFunction = () => {
   return [{title: 'Hydrogen | Home'}];
@@ -59,11 +62,65 @@ export default function Homepage() {
   const data = useLoaderData<typeof loader>();
   return (
     <div className="home">
-      <FeaturedCollection collection={data.featuredCollection} />
-      <RecommendedProducts products={data.recommendedProducts} />
+      {/* <FeaturedCollection collection={data.featuredCollection} />
+      <RecommendedProducts products={data.recommendedProducts} /> */}
+      <ProductCard data={cardData()} />
     </div>
   );
 }
+
+// function ProductCard() {
+//   return (<div className='flex justify-center'>
+//     <div className='flex-col px-8'>
+//       <h1 className='justify-start'>Product Card</h1>
+
+//       <div className='flex relative justify-center bg-[#FFFFF] p-5 border border-gray-300 rounded-xl'>
+//         <span className='z-30 left-5 top-5 absolute text-red-500 border-2 border-red-500 rounded-full h-10 pt-1.5 px-8'>On Sale!</span>
+//         <img src={Green} alt='Green shirt' className='mt-4' />
+//       </div>
+
+//       <div className='flex gap-2'> 
+//         {
+//           [
+//             {
+//             color: 'bg-[#FF6633]',
+//             current: true
+//           },
+//           {
+//             color: 'bg-[#006600]',
+//           },
+//           {
+//             color: 'bg-[#00639C]',
+//           },
+//           {
+//             color: 'bg-[#FCE78D]',
+//           },
+//           {
+//             color: 'bg-[#FFCCFF]',
+//           },
+//           {
+//             color: 'bg-[#19264B]',
+//           },
+//         ].map((item, index) => (
+//               <div key={item.color} className={`flex justify-center items-center w-10 h-10 rounded-full ${item.current && 'border-2 border-[#0A4874]' } mt-4`}>
+//                 <div className={`w-8 h-8 ${item.color} rounded-full`}></div>
+//               </div>
+//           ))
+//         }
+//       </div>
+          
+
+//       <div className='flex flex-col gap-2 mt-5'>
+//         <div className='text-[#111111] font-normal text-sm'>Good Brand Company</div>
+//         <div className='text-[#0A4874] text-base font-medium'>Plain T-Shirt</div>
+//         <div className='flex justify-start gap-2'>
+//           <p className='text-black-400 line-through'>29.50</p>
+//           <p className='text-red-400'>20.00</p>
+//         </div>
+//       </div>
+//     </div>
+//   </div>)
+// }
 
 function FeaturedCollection({
   collection,
