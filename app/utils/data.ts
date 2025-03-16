@@ -23,37 +23,43 @@ export const cardData = () => {
           id: 1,
           color: 'bg-[#FF6633]',
           current: true,
-          swatchImage: Orange
+          swatchImage: Orange,
+          secondaryImage: OrangeSecondary,
         },
         {
           id: 2,
           color: 'bg-[#006600]',
           current: false,
-          swatchImage: Green
+          swatchImage: Green,
+          secondaryImage: GreenSecondary,
         },
         {
           id: 3,
           color: 'bg-[#00639C]',
           current: false,
-          swatchImage: Navy
+          swatchImage: Blue,
+          secondaryImage: BlueSecondary,
         },
         {
           id: 4,
           color: 'bg-[#FCE78D]',
           current: false,
-          swatchImage: Yellow
+          swatchImage: Yellow,
+          secondaryImage: YellowSecondary,
         },
         {
           id: 5,
           color: 'bg-[#FFCCFF]',
           current: false,
-          swatchImage: Pink
+          swatchImage: Pink,
+          secondaryImage: PinkSecondary,
         },
         {
           id: 6,
           color: 'bg-[#19264B]',
           current: false,
-          swatchImage: Blue
+          swatchImage: Navy,
+          secondaryImage: NavySecondary,
         },
       ]
     }
