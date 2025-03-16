@@ -18,6 +18,8 @@ export const cardData = () => {
       productImage: Green,
       productTitle: 'Plain T-Shirt',
       companyName: 'Good Brand Company',
+      originalPrice: '29.50',
+      discountedPrice: '20.00',
       variantSwatches: [
         {
           id: 1,

@@ -13,6 +13,8 @@ type ProductData = {
     productImage: string;
     productTitle: string;
     companyName: string;
+    originalPrice: string;
+    discountedPrice: string;
     variantSwatches: VariantSwatch[];
   };
 
@@ -61,8 +63,8 @@ export function ProductCard({ data }: { data: ProductData }) {
                 <div className='text-[#111111] font-normal text-sm'>{data.companyName}</div>
                 <div className='text-[#0A4874] text-base font-medium'>{data.productTitle}</div>
                 <div className='flex justify-start gap-2'>
-                <p className='text-black-400 line-through'>29.50</p>
-                <p className='text-red-400'>20.00</p>
+                <p className={`text-black-400 ${data.discountedPrice && 'line-through'}`}>{data.originalPrice}</p>
+                <p className='text-red-400'>{data.discountedPrice ?? null}</p>
                 </div>
             </div>
             </div>
